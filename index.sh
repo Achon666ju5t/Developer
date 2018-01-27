@@ -17,6 +17,8 @@ printf "Usage : ./index.sh | Backdoor Scanner          /___/ By Extreme Crew    
 printf "${NC}\n"
 }
 clear
+chmod +x shellchecker
+chmod +x scanner
 header
 echo "1. Mass Shell Checker"
 echo "2. Backdoor Scanner"
