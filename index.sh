@@ -13,7 +13,7 @@ printf "    /   | _____/ /_  ____  ____  / ___// ___// ___/  (_)_  __/ ____/ /_ 
 printf "   / /| |/ ___/ __ \/ __ \/ __ \/ __ \/ __ \/ __ \  / / / / /___ \/ __/   \n"
 printf "  / ___ / /__/ / / / /_/ / / / / /_/ / /_/ / /_/ / / / /_/ /___/ / /_     \n"
 printf " /_/  |_\___/_/ /_/\____/_/ /_/\____/\____/\____/_/ /\__,_/_____/\__/     \n"
-printf "     Backdoor Scanner By Extreme Crew          /___/ Run Dulu Baru Nanya  \n"
+printf "Usage : ./index.sh | Backdoor Scanner          /___/ By Extreme Crew      \n"
 printf "${NC}\n"
 }
 clear
