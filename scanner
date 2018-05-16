@@ -1,6 +1,7 @@
 # Coded by : Achon666ju5t - Extreme Crew
 # You can edit this file to scan all type :) what you want :)
 ###################################
+
 # Achonk-JustScanner
 NC='\033[0m'
 GREEN='\e[38;5;82m'
@@ -18,50 +19,71 @@ printf " / ___ / /__/ / / / /_/ / / / / /_/ / /_/ / /_/ / / / /_/ /___/ / /_  \n
 printf "/_/  |_\___/_/ /_/\____/_/ /_/\____/\____/\____/_/ /\__,_/_____/\__/  \n"
 printf "	                                              /___/                   \n"
 printf "${GREEN}==================================================================\n${NC}"
-printf "Tools ini dibuat untuk mencari file yang mengandung kata kata yang berbahaya\n"
+printf "${GREEN}Tools ini dibuat untuk mencari file yang mengandung kata kata yang berbahaya\n"
 printf "${NC}"
 }
 clear
 header
 sleep 5
+if [[ ! "$(id -u)" = "$?" ]]; then
+	echo "use this as root"
+	echo "Are you root ?"
+	exit;
+fi
 dir="AchonkScanner"
 if [ ! -d $dir ];then
 mkdir $dir
 fi
+echo -n "Scanning ...."
 sleep 2
-grep -lr "base64_decode" >> $dir/base64.txt
-grep -lr "hacked" >> $dir/hacked.txt
-grep -lr "\@eval" >> $dir/evalrunning.txt
-for hacked in $(cat $dir/hacked.txt); do
-	printf "${RED}[Found Hacked] => $hacked${NC}\n"
-done
-for base in $(cat $dir/base64.txt); do
-	printf "${RED}[Found Base64_encode] => $base${NC}\n"
-done
-
-for ev in $(cat $dir/base64.txt); do
-	printf "${RED}[Found Base64_encode] => $ev${NC}\n"
-done
-echo -n "Delete File \"hacked\" included? [y/n]"
+echo -n "...."
+sleep 3
+echo -n "..."
+sleep 2
+base=$(grep -lr "base64_decode")
+hacked=$(grep -lr "hacked")
+eva=$(grep -lr "\@eval")
+echo "$base"
+echo "$hacked"
+echo "$eva"
+echo "$base" >> $dir/base64.txt
+echo "$hacked" >> $dir/hacked.txt
+echo "$eva" >> $dir/evalrunning.txt
+echo -n "Delete File  includes \"hacked\"? [y/n]"
 read del
 if [[ "$del" = "y" ]]; then
-	for dele in $(cat $dir/hacked.txt); do
-		if [ ! -f $dele ]; then
-		printf "${GREEN} $delete => Sukses"
-	else
-		printf "${RED} You Dont Have Permission to delete $dele => Fail"
-	fi
-done
-fi
-echo -n "Delete File \"Base64_encode\" included?"
-read bd
-if [[ "$bd" = "y" ]]; then
-	for delet in $(cat $dir/base64.txt); do
-		if [ ! -f $delet ]; then
-			printf "${GREEN}$delete => [Succes]"
+	for h in $(cat $dir/hacked.txt); do
+		rm -f $h
+		if [[ ! -f $h ]]; then
+			printf "${GREEN}Delete succes => $h\n${NC}"
 		else
-			printf "${RED}You Dont Have Permission,are you root ?"
+			printf "${RED}Delete Failed => Try manual\n${NC}"
 		fi
 	done
+fi
+echo -n "Delete File included \"base64_\" ? "
+read delb 
+if [[ "$delb" = "y" ]]; then
+	for b in $(cat $dir/base64.txt); do
+		rm -f $b
+		if [ ! -f $b ]; then
+			printf "${GREEN}Delete Succes => $b\n${nc}"
+		else
+			printf "${RED}Delete Failed => $b\n${NC}"
+		fi
+	done
+fi
+
+echo -n "Delete File Included "@eval" [y/n]?"
+read dele
+if [[ "$dele" = "y" ]]; then
+for e in $(cat $dir/evalrunning.txt); do
+	rm -f $e 
+	if [ ! -f $e ]; then
+		printf "${GREEN}Delete Succes => $e\n${NC}"
+	else
+		printf "${RED}Delete Failed => $e\n${NC}"
+	fi
+done
 fi
 printf "${GREEN}Thank's For Using this tools, Hope your day will better${NC}\n"
