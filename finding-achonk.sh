@@ -2,7 +2,7 @@
 # You can edit this file to scan all type :) what you want :)
 ###################################
 
-# Achonk-JustScanner
+# Finding-Achonk
 NC='\033[0m'
 GREEN='\e[38;5;82m'
 CYAN='\e[38;5;45m'
