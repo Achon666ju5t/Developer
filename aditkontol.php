@@ -30,7 +30,7 @@ while ($x < $max) {
 	$tf = json_decode(file_get_contents("http://yvelynette17.id/ovo/play_game.php?phone_number=$account&access_code=$access"));
 	if($tf->error == false)
 	{
-		$i++;
+		$x++;
 		echo "[SUCCESS] " . $tf->message . " [$x]" . "\n";
 	} else {
 		echo "[FAILED] " . $tf->message . "\n";
